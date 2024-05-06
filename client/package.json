@@ -1,0 +1,47 @@
+{
+    "name": "client",
+    "version": "0.1.0",
+    "private": true,
+    "scripts": {
+        "dev": "next dev",
+        "build": "next build",
+        "start": "next start",
+        "lint": "next lint"
+    },
+    "dependencies": {
+        "@formkit/auto-animate": "^0.8.2",
+        "@nextui-org/react": "^2.3.6",
+        "classnames": "^2.5.1",
+        "clsx": "^2.1.1",
+        "date-fns": "^3.6.0",
+        "framer-motion": "^11.1.7",
+        "lucide-react": "^0.376.0",
+        "next": "14.2.3",
+        "next-themes": "^0.3.0",
+        "react": "link:@formkit/auto-animate/react",
+        "react-aiwriter": "^1.0.0",
+        "react-dom": "^18",
+        "react-icons": "^5.1.0",
+        "react-if": "^4.1.5",
+        "react-markdown": "^9.0.1",
+        "react-modern-drawer": "^1.2.2",
+        "remark-gfm": "^4.0.0",
+        "simplex-noise": "^4.0.1",
+        "tailwind-merge": "^2.3.0",
+        "typewriter-effect": "^2.21.0",
+        "uuid": "^9.0.1"
+    },
+    "devDependencies": {
+        "@types/node": "^20",
+        "@types/react": "^18",
+        "@types/react-dom": "^18",
+        "@types/uuid": "^9.0.8",
+        "eslint": "^8",
+        "eslint-config-next": "14.2.3",
+        "postcss": "^8",
+        "prettier": "^3.2.5",
+        "prettier-plugin-tailwindcss": "^0.5.14",
+        "tailwindcss": "^3.4.1",
+        "typescript": "^5"
+    }
+}

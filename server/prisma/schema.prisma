@@ -1,0 +1,19 @@
+datasource db {
+    provider = "mongodb"
+    url      = env("DATABASE_URL")
+}
+
+generator client {
+    provider             = "prisma-client-py"
+    recursive_type_depth = 5
+}
+
+model Message {
+    id        String   @id @default(auto()) @map("_id") @db.ObjectId
+    author    String
+    content   String
+    chat_id   String
+    type      String   @default("TEXT")
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+}
