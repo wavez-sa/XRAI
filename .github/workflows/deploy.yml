@@ -39,3 +39,4 @@ jobs:
           "sudo chown -R ubuntu:apache ./server"
         env:
           SSH_PRIVATE_KEY: ${{ secrets.DEPLOY_KEY }}
+# test comment
