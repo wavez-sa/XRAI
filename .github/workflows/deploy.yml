@@ -18,7 +18,7 @@ jobs:
           switches: -avzr --delete
           path: ./server
           remote_path: ./server
-          remote_host: 16.170.230.91
+          remote_host: 13.51.48.110
           remote_user: ubuntu
           remote_key: "${{ secrets.DEPLOY_KEY }}"
 
@@ -32,10 +32,10 @@ jobs:
           touch /home/runner/.ssh/known_hosts
           
           # Clear old key from known_hosts
-          ssh-keygen -R 16.170.230.91 >> /home/runner/.ssh/known_hosts
+          ssh-keygen -R 13.51.48.110 >> /home/runner/.ssh/known_hosts
 
           # Run the SSH command
-          ssh -i private_key.pem -o StrictHostKeyChecking=no ubuntu@16.170.230.91 \
+          ssh -i private_key.pem -o StrictHostKeyChecking=no ubuntu@13.51.48.110 \
           "sudo chown -R ubuntu:apache ./server"
         env:
           SSH_PRIVATE_KEY: ${{ secrets.DEPLOY_KEY }}
