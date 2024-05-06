@@ -1,0 +1,41 @@
+name: Deploy Flask server to EC2
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get latest code
+        uses: actions/checkout@v2
+
+      - name: rsync deployments
+        uses: burnett01/rsync-deployments@5.1
+        with:
+          switches: -avzr --delete
+          path: ./server
+          remote_path: ./server
+          remote_host: 16.170.230.91
+          remote_user: ubuntu
+          remote_key: "${{ secrets.DEPLOY_KEY }}"
+
+      - name: Set ownership on remote server
+        run: |
+          echo "${{ secrets.DEPLOY_KEY }}" > private_key.pem
+          chmod 600 private_key.pem
+
+          # Create known_hosts file if it doesn't exist
+          mkdir -p /home/runner/.ssh
+          touch /home/runner/.ssh/known_hosts
+          
+          # Clear old key from known_hosts
+          ssh-keygen -R 16.170.230.91 >> /home/runner/.ssh/known_hosts
+
+          # Run the SSH command
+          ssh -i private_key.pem -o StrictHostKeyChecking=no ubuntu@16.170.230.91 \
+          "sudo chown -R ubuntu:apache ./server"
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.DEPLOY_KEY }}
