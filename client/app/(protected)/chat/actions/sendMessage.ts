@@ -13,7 +13,7 @@ const sendMessage = async (formData: SendMessageProps) => {
 
     if (!message && !image) return;
 
-    await fetch('http://localhost:3001/chat', {
+    await fetch('https://api.xrai.dev/chat', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
