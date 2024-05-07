@@ -132,7 +132,6 @@ Make sure the descriptions are informative and the confidence scores are formatt
 input: {prediction}
 """
 
-            print(prediction)
             response = llm_helper.get_response(prompt.replace('{prediction}', str(prediction)), '')
 
             os.system('clear')

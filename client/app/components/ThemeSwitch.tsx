@@ -12,6 +12,8 @@ const ThemeSwitch = () => {
 
     if (!mounted) return null;
 
+    return
+
     return (
         <If condition={resolvedTheme === 'dark'}>
             <Then>

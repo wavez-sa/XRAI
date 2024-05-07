@@ -4,7 +4,7 @@ import Link from 'next/link';
 const page = () => {
     return (
         <div
-            className='flex h-screen flex-col items-center justify-center gap-4'
+            className='flex h-screen flex-col items-center justify-center gap-4 bg-[#212226]'
             style={{
                 backgroundImage:
                     'url("https://i.imgur.com/J8gHy6I.png")',
@@ -19,7 +19,7 @@ const page = () => {
             <TypeEffect />
             <Link
                 href={'/chat'}
-                className='rounded-md bg-primary px-12 py-2 pt-2 text-lg lg:text-2xl'
+                className='rounded-md border border-transparent bg-primary px-12 py-2 pt-2 text-lg text-white duration-300 hover:border-primary hover:bg-opacity-0 lg:text-2xl'
             >
                 Try Now
             </Link>

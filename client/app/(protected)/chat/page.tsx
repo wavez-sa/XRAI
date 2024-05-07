@@ -7,9 +7,18 @@ import { ChatBubble, MessagesComponents } from './components';
 import { getClientToken } from '@/app/lib';
 
 const getMessages = async () => {
-    const response = await fetch(process.env.NEXT_PUBLIC_BASE_URL +  '/chat', {
-        headers: { Cookie: cookies().toString() }
-    });
+    const token = cookies().get(
+        process.env.XRAI_TOKEN as string
+    )?.value;
+    const response = await fetch(
+        process.env.NEXT_PUBLIC_BASE_URL + '/chat',
+        {
+            headers: {
+                Cookie: cookies().toString(),
+                Authorization: `Bearer ${token}`
+            }
+        }
+    );
     const data = (await response.json()) as MessageProps[];
     return data;
 };

@@ -33,7 +33,7 @@ const CustomWriter = ({ message }: { message: string }) => {
     return (
         <div>
             {typedMessage.map((word, index) => (
-                <span key={`words-${index}`}>
+                <span key={`words-${index}`} className='text-white'>
                     {word}
                     {index !== typedMessage.length - 1 && ' '}
                 </span>

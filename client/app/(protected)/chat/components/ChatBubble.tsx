@@ -8,7 +8,7 @@ import { CustomWriter } from '@/app/components';
 import remarkGfm from 'remark-gfm';
 
 import '../styles/markdown.css';
-import { isBase64Image,  } from '@/app/lib';
+import { isBase64Image } from '@/app/lib';
 import Link from 'next/link';
 
 interface ChatBubbleProps {
@@ -39,7 +39,12 @@ const ChatBubble = ({
                     'flex-row-reverse': isMe
                 })}
             >
-                <Avatar src={avatarUrl} size='sm' alt='Avatar' className='rounded-full w-10 h-9' />
+                <Avatar
+                    src={avatarUrl}
+                    size='sm'
+                    alt='Avatar'
+                    className='h-9 w-10 rounded-full'
+                />
                 <div
                     className={classnames(
                         'flex w-full max-w-4xl flex-col rounded-lg p-4',
@@ -54,7 +59,7 @@ const ChatBubble = ({
                 >
                     <div className='flex items-center space-x-2'>
                         <span className='text-sm font-semibold text-white'>
-                            {isMe ? 'You' : author}
+                            {isMe ? 'You' : 'XRAI'}
                         </span>
                         <span className='text-sm font-normal text-gray-400'>
                             {formatRelative(
@@ -111,7 +116,7 @@ const ChatBubble = ({
                             {isLast && !isMe ? (
                                 <CustomWriter message={message} />
                             ) : (
-                                <p>{message}</p>
+                                <p className='text-white'>{message}</p>
                             )}
                         </div>
                     )}
@@ -122,4 +127,6 @@ const ChatBubble = ({
 };
 
 export default ChatBubble;
-{/* <CustomWriter message={message} /> */}
+{
+    /* <CustomWriter message={message} /> */
+}

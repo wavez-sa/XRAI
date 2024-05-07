@@ -12,8 +12,6 @@ const sendMessage = async (image: string) => {
         body: JSON.stringify({ image })
     });
 
-    console.log(response.status);
-
     revalidatePath('/chat');
 };
 

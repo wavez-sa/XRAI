@@ -10,7 +10,7 @@ const Navbar = () => {
     return (
         <nav className='flex w-full items-center justify-between rounded-lg bg-primary p-3 '>
             <div>
-                <h1 className='text-lg font-bold'>Chat</h1>
+                <h1 className='text-lg font-bold text-white'>Chat</h1>
             </div>
             <div className='flex items-center gap-4'>
                 <ThemeSwitch />

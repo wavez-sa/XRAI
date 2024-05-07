@@ -2,6 +2,7 @@ import type { Config } from 'tailwindcss';
 import { nextui } from '@nextui-org/react';
 
 const config: Config = {
+    darkMode: 'class',
     content: [
         './pages/**/*.{js,ts,jsx,tsx,mdx}',
         './components/**/*.{js,ts,jsx,tsx,mdx}',
@@ -20,14 +21,14 @@ const config: Config = {
             themes: {
                 light: {
                     colors: {
-                        background: '#f8fafc',
-                        primary: '#0340bf',
+                        background: '#212226',
+                        primary: '#0340bf'
                     }
                 },
                 dark: {
                     colors: {
                         background: '#212226',
-                        primary: '#3955d9',
+                        primary: '#3955d9'
                     }
                 }
             }

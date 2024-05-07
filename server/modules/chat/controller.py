@@ -19,7 +19,9 @@ messages = [
 
 @router.get('/')
 async def get_messages(request: Request):
-    token = request.cookies.get(os.getenv('XRAI_TOKEN') or 'xrai_token')
+    # token = request.cookies.get(os.getenv('XRAI_TOKEN') or 'xrai_token')
+    bearer = request.headers.get('Authorization')
+    token = bearer.split(' ')[1] if bearer else None
     if not token:
         raise HTTPException(status_code=401, detail='Unauthorized')
 
@@ -27,14 +29,13 @@ async def get_messages(request: Request):
 
 
 
-
-
 @router.post('/')
 async def create_image(request: Request):
-    token = request.cookies.get(os.getenv('XRAI_TOKEN') or 'xrai_token')
+    bearer = request.headers.get('Authorization')
+    token = bearer.split(' ')[1] if bearer else None
+    os.system('clear')
     if not token:
         raise HTTPException(status_code=401, detail='Unauthorized')
-
 
     body = await request.json()
     os.system('clear')

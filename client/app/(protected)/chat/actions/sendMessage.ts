@@ -9,15 +9,17 @@ interface SendMessageProps {
 }
 
 const sendMessage = async (formData: SendMessageProps) => {
+    const token = cookies().get(
+        process.env.XRAI_TOKEN as string
+    )?.value;
     const { message, image } = formData;
-
     if (!message && !image) return;
 
-    await fetch('http://localhost:3001/chat', {
+    await fetch(process.env.NEXT_PUBLIC_BASE_URL + '/chat', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-            Cookie: cookies().toString()
+            Authorization: `Bearer ${token}`
         },
         body: JSON.stringify({ message, image })
     });
