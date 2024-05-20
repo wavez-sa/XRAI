@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { v4 as uuidv4 } from 'uuid';
+import { clerkMiddleware } from '@clerk/nextjs/server';
 
 export function middleware(request: NextRequest) {
     const cookies = request.cookies;
@@ -15,6 +16,9 @@ export function middleware(request: NextRequest) {
     });
 }
 
-// export const config = {
-//     matcher: ['/chat', '/']
-// };
+
+export default clerkMiddleware();
+
+export const config = {
+    matcher: ['/((?!.*..*|_next).*)', '/', '/(api|trpc)(.*)']
+};

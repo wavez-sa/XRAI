@@ -4,6 +4,7 @@ import { useAutoAnimate } from '@formkit/auto-animate/react';
 
 import { MessageProps } from '@/app/types';
 import { SendMessageForm, ChatBubble } from './';
+import { useUser } from '@clerk/nextjs';
 
 const MessagesComponents = ({
     messages,
@@ -39,6 +40,8 @@ const MessagesComponents = ({
 
     const [autoAnimateRef] = useAutoAnimate();
 
+    const { user } = useUser();
+
     return (
         <>
             <div className='mt-4 flex h-full w-full flex-col  overflow-y-auto'>
@@ -50,7 +53,7 @@ const MessagesComponents = ({
                         <ChatBubble
                             key={index}
                             message={message.content}
-                            isMe={message.author === clientToken}
+                            isMe={index % 2 !== 0 && message.type !== 'MARKDOWN'}
                             type={message.type}
                             isLast={
                                 index ===

@@ -2,7 +2,8 @@ import type { Config } from 'tailwindcss';
 import { nextui } from '@nextui-org/react';
 
 const config: Config = {
-    darkMode: 'class',
+    // make sure is it lightTheme always
+    darkMode: 'media',
     content: [
         './pages/**/*.{js,ts,jsx,tsx,mdx}',
         './components/**/*.{js,ts,jsx,tsx,mdx}',
@@ -12,7 +13,7 @@ const config: Config = {
     theme: {
         extend: {
             nextui: {
-                borderRadius: '0.1rem' // set the main border radius to 0.3
+                borderRadius: '0.1rem',
             }
         }
     },
@@ -21,14 +22,8 @@ const config: Config = {
             themes: {
                 light: {
                     colors: {
-                        background: '#212226',
+                        background: '#FFF',
                         primary: '#0340bf'
-                    }
-                },
-                dark: {
-                    colors: {
-                        background: '#212226',
-                        primary: '#3955d9'
                     }
                 }
             }

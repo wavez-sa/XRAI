@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Share_Tech } from 'next/font/google';
+import { ClerkProvider } from '@clerk/nextjs';
 
 import Providers from './providers';
 
@@ -20,13 +21,15 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
+        <ClerkProvider>
         <html lang='en' suppressHydrationWarning className='dark'>
             <body
                 className={share_tech.className}
                 suppressHydrationWarning
-            >
+                >
                 <Providers>{children}</Providers>
             </body>
         </html>
+                </ClerkProvider>
     );
 }

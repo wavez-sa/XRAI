@@ -43,7 +43,7 @@ const UploadImageButton = ({
                 htmlFor='uploadFile'
                 className='grid h-full w-10 place-content-center'
             >
-                <Image />
+                <Image className='text-slate-900'/>
             </label>
             <input
                 onChange={uploadImage}

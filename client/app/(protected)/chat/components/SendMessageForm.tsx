@@ -4,6 +4,7 @@ import { useState, useRef } from 'react';
 import { sendMessage } from '../actions';
 import { MessageProps } from '@/app/types';
 import { SendButton, UploadImageButton } from './';
+import { useClerk, useUser } from '@clerk/nextjs';
 
 interface SendMessageFormProps {
     addOptimisticMessage: (action: MessageProps) => void;
@@ -16,6 +17,8 @@ const SendMessageForm = ({
 }: SendMessageFormProps) => {
     const formRef = useRef<HTMLFormElement>(null);
 
+    const { user } = useUser();
+    const token = user?.id ?? 'UNIVERSAL_TOKEN'
     return (
         <form
             ref={formRef}
@@ -36,14 +39,14 @@ const SendMessageForm = ({
 
                 await sendMessage({
                     message
-                });
+                }, token);
             }}
         >
             <Input
                 type='text'
                 name='message'
                 label='Question'
-                className='col-span-11 '
+                className='col-span-11 light'
                 errorMessage='Please enter a message'
                 required
                 endContent={

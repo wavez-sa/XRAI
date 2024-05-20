@@ -47,10 +47,10 @@ const ChatBubble = ({
                 />
                 <div
                     className={classnames(
-                        'flex w-full max-w-4xl flex-col rounded-lg p-4',
+                        'flex w-full max-w-4xl flex-col rounded-lg p-4 shadow-xl',
                         {
-                            'bg-gray-700': isMe,
-                            'bg-gray-800': !isMe,
+                            'bg-white': isMe,
+                            'bg-[#F5F5F6]': !isMe,
                             'rounded-tr-none': isMe,
                             'rounded-tl-none': !isMe,
                             'border-gray-200': true
@@ -58,10 +58,10 @@ const ChatBubble = ({
                     )}
                 >
                     <div className='flex items-center space-x-2'>
-                        <span className='text-sm font-semibold text-white'>
+                        <span className='text-sm font-semibold text-slate-900'>
                             {isMe ? 'You' : 'XRAI'}
                         </span>
-                        <span className='text-sm font-normal text-gray-400'>
+                        <span className='text-sm font-normal text-gray-900'>
                             {formatRelative(
                                 new Date(createdAt),
                                 new Date()
@@ -106,7 +106,7 @@ const ChatBubble = ({
                         </Link>
                     ) : type === 'MARKDOWN' ? (
                         <ReactMarkdown
-                            className=' markdown-content font-light text-white'
+                            className=' markdown-content font-light text-slate-900'
                             remarkPlugins={[remarkGfm]}
                         >
                             {message.replaceAll('"', '')}
@@ -116,7 +116,7 @@ const ChatBubble = ({
                             {isLast && !isMe ? (
                                 <CustomWriter message={message} />
                             ) : (
-                                <p className='text-white'>{message}</p>
+                                <p className='text-slate-900'>{message}</p>
                             )}
                         </div>
                     )}
